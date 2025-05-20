@@ -1,11 +1,38 @@
+let allTypes: string[];
+import './types.scss';
+
 const Types = () => {
-    return(
-        <div>
-            <h2>Types !</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus consectetur, architecto temporibus nostrum assumenda necessitatibus ratione, porro modi vero, nulla praesentium quae? Temporibus culpa provident quis nisi optio obcaecati harum?
-            Quidem laborum placeat minima fugiat cumque corrupti esse accusamus quas! Sit in vitae numquam reprehenderit dolorum? Quo est voluptatibus, numquam similique magni inventore sed soluta ea. Hic illum necessitatibus quo.</p>        </div>
 
-    )
-}
+  const fetchTypes = async () => {
+    try {
+      const response = await fetch("https://pokeapi.co/api/v2/type/");
+      const data = await response.json();
+      allTypes = data.results.map((item: { name: any }) => item.name);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-export default Types
+  fetchTypes();
+  return (
+    <div className="pokemon__types">
+    {allTypes && allTypes.filter((_, index) => index < 18)
+    .map((item: string, index:number) => (
+      <a
+        key={index}
+        href=""
+        className={`pokemon__content--${item}`}
+      >
+        {item}
+      </a>
+    ))}
+
+    </div>
+
+  )
+
+ 
+};
+
+export default Types;
