@@ -1,0 +1,117 @@
+@import '../styles/_variales';
+@import '../styles/mixins';
+
+* {
+    box-sizing: border-box;
+}
+
+// #c77dff #5a189a  #240046 #e0aaff #7b2cbf
+
+.header {
+    @include flexrow;
+    gap: $indent__base;
+ 
+        padding: 0  $indent__m;
+          
+    img {
+        height: auto;
+        width: 100%;
+    }
+    &__icon,
+    &__avatar {
+
+        // same here display none when it is ressponsive and when it is not display block
+        display: none;
+        @include responsive-tablet{
+            display: block;
+            width: 150px;
+        }
+    }
+    &__logo {
+        flex-grow: 1;
+        @include responsive-tablet {
+            padding: 0 $indent__xxl;
+        }
+         img {
+             @include responsive-tablet{
+                // the opposite of responssive when it is not ressponsive apply the height
+                height: 430px;
+
+             }
+         }
+    }
+}
+
+.menu {
+    @include flexrow;
+    @include page-layout($indent__xl, auto);
+        @include responsive-tablet {
+        padding: 0  $indent__l;
+    }
+    &__item {
+      
+       &--home {
+         @include menu-item($color-torch-red);
+
+       }
+
+        &--pokemon {
+             @include menu-item($color-bright-sun);
+        
+       }
+
+        &--about {
+             @include menu-item($color-malibu);
+        
+       }
+
+        &--types {
+             @include menu-item($color-minsk);
+        
+       }
+
+    }
+    
+}
+
+.home-grid {
+    @include responsie-mobile {
+        display: grid;
+        gap: $indent__base;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        grid-template-areas: " . . . "
+                             "main main ."
+                             "main main ."
+ 
+    }
+
+    &__article {
+        margin-bottom: $indent__base;
+        @include responsie-mobile {
+            margin-bottom: 0;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &.primary {
+            @include home-grid-article($color-bright-sun)
+        }
+
+        &.secondary {
+            @include home-grid-article($color-dark-gray)
+        }
+
+        &.tertiary {
+            @include home-grid-article($color-minsk)
+        }
+        
+        &.featured {
+            @include home-grid-article($color-malibu);
+            grid-area: main;
+        }
+
+        @include home-grid-article;
+    }
+}

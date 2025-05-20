@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import './mixins';
+
+//Spacing 
+
+$indent__base: 16px;
+
+$indent__s: $indent__base / 2;
+$indent__m: $indent__base * 1.5;
+$indent__l: $indent__base * 2;
+$indent__xl: $indent__base * 3;
+$indent__xxl: $indent__base * 4;
+$indent__xxxl: $indent__base * 5;
+
+//colours
+$color-white: #fff;
+$color-bright-sun: #fbd743;
+$color-torch-red: 	#ff1f1f;
+$color-malibu: #5db9ff;
+$color-minsk: #f15bb5;
+$color-gray: #919191;
+$color-dark-gray: #333;
+
+
+//utility colours
+
+$color-primary: $color-white;
+$background-primary: $color-dark-gray;
+
+//Font 
+$font_orbitron:"Orbitron", "sans-serif";
+
+//Breakpoints
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 400px;
+
+//Types colors for Pokemon 
+$colours: (
+	normal: #A8A77A,
+	fire: #EE8130,
+	water: #6390F0,
+	electric: #F7D02C,
+	grass: #7AC74C,
+	ice: #96D9D6,
+	fighting: #C22E28,
+	poison: #A33EA1,
+	ground: #E2BF65,
+	flying: #A98FF3,
+	psychic: #F95587,
+	bug: #A6B91A,
+	rock: #B6A136,
+	ghost: #735797,
+	dragon: #6F35FC,
+	dark: #705746,
+	steel: #B7B7CE,
+	fairy: #D685AD,
+);
+
+//To loop over the colors
+@each $colour, $value in $colours {
+  .pokemon__content--#{$colour} {
+    @include button-style($value);
+  }
+}

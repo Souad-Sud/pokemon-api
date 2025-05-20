@@ -1,0 +1,103 @@
+@mixin flexrow {
+    background-color: #003554;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// for the title h3 to be in the bottom we change it to flex
+@mixin flexcol {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin page-layout($Yaxis, $Xaxis){
+    max-width: 1440px;
+    margin: $Yaxis $Xaxis;
+}
+
+@mixin menu-item ($accentColor: $color-gray){
+   
+    border-bottom: $indent__s solid $accentColor;
+    color: $color-white;
+    padding: $indent__xl $indent__s;
+
+    font: {
+        family: $font_orbitron;
+        size: 1.2rem;
+        weight: 700;
+    }
+    padding: $indent__xl $indent__s;
+
+    text : {
+        align: center;
+        decoration: none;
+        transform: capitalize;
+    }
+    letter-spacing: 1.2;
+
+    &:hover,
+    &.active {
+        background-color: $accentColor;
+    }
+
+    @include responsive-tablet {
+        padding: $indent__xl;
+    }
+}
+
+// for the button in the pokemon
+@mixin button-style ($color: $color-torch-red){
+    background-color: lighten($color, 30%);
+    border: 2px solid $color;
+    border-radius: 10px;
+    color: $color;
+    padding: $indent__base;
+    cursor: pointer;
+}
+
+@mixin responsive-tablet {
+    @media screen and (min-width: $breakpoint-tablet) {
+        @content; //plecholder whatever you put inside
+    }
+}
+
+
+// pass different background color
+@mixin home-grid-article($color: pink) {
+    @include flexcol;
+    @if ($color ==  $color-dark-gray) {
+        color: $color-malibu;
+        h3 {
+            // to make the title in the bottom
+            order: 2;
+        }
+
+        img {
+            order: 1;
+        }
+
+    }@else if ($color == $color-torch-red) {
+        color: $color-white;
+    } @else {
+        color: $color-torch-red;
+    }
+    // background-color: $color;
+    background-color: $color;
+    text-align: center;
+    font: {
+        family: $font_orbitron;
+    }
+    h3 {
+      
+        margin: 0;
+        padding: $indent__base 0 ;
+    }
+
+}
+
+@mixin responsie-mobile {
+    @media screen and (min-width: $breakpoint-mobile){
+        @content;
+    }
+}
