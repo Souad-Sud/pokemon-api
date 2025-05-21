@@ -63,3 +63,15 @@ $colours: (
     @include button-style($value);
   }
 }
+
+@each $colour, $value in $colours {
+  .pokemon__content--img-#{$colour} {
+   background: radial-gradient($value, complement($value));
+   max-width: 500px;
+   margin: 20px auto;
+   padding: 30px;
+   border-radius: 100%;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  }
+}

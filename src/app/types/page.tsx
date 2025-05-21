@@ -21,7 +21,7 @@ const Types = () => {
     .map((item: string, index:number) => (
       <a
         key={index}
-        href=""
+        href={`/types/${item}`}
         className={`pokemon__content--${item}`}
       >
         {item}
