@@ -9,7 +9,7 @@ interface PokemonType {
 
 let data: PokemonType[];
 
-const TypePage = async ({params}: {params: {type: Promise<string>}}) => {
+const TypePage = async ({params}: {params: Promise<{type:string}>}) => {
     const {type} = await params;
 
     try {
